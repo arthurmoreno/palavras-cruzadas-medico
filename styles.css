@@ -1,0 +1,96 @@
+:root {
+  --bg: #0b0c10;
+  --panel: #11141a;
+  --fg: #e6e8eb;
+  --muted: #9aa4af;
+  --primary: #3fb950;
+  --accent: #4cc9f0;
+  --danger: #ff6b6b;
+  --grid: #233041;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 8px;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--panel);
+  border-bottom: 1px solid #1f2430;
+}
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand h1 { font-size: 18px; margin: 0; }
+.logo { font-size: 20px; }
+.header-actions { display: flex; gap: 8px; align-items: center; }
+
+select, button, textarea {
+  background: #0f1116;
+  color: var(--fg);
+  border: 1px solid #2a3545;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+button.primary { background: var(--primary); color: #08110b; border: none; }
+button[aria-pressed="true"], .tab.active { outline: 2px solid var(--accent); }
+
+.app-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px;
+}
+.left, .right { background: var(--panel); padding: 12px; border-radius: 12px; }
+
+canvas#board {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: #0c1017;
+  border: 1px solid #1f2837;
+}
+
+.hud { display: flex; gap: 16px; margin-top: 8px; color: var(--muted); }
+.controls { display: flex; gap: 8px; margin-top: 8px; }
+
+.clue-box h2 { margin-top: 0; }
+.clues { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.clues ol { margin: 0; padding-left: 18px; }
+.clues li { margin-bottom: 6px; }
+
+.review h2 { margin-bottom: 8px; }
+.review ul { margin: 0; padding-left: 18px; }
+
+.editor textarea { width: 100%; }
+.editor-actions { margin-top: 6px; }
+
+.app-footer { background: var(--panel); padding: 8px 12px; border-top: 1px solid #1f2430; }
+.tabs { display: flex; gap: 6px; }
+.tab { background: #0f1116; padding: 8px 10px; border: 1px solid #2a3545; border-radius: 8px; color: var(--fg); }
+.tab-content { padding-top: 8px; color: var(--muted); }
+
+@media (max-width: 960px) {
+  .app-main { grid-template-columns: 1fr; }
+}
+
+/* Light theme */
+.light {
+  --bg: #f6f8fa;
+  --panel: #ffffff;
+  --fg: #0a0c10;
+  --muted: #5f6b77;
+  --primary: #2da44e;
+  --accent: #0ea5e9;
+  --grid: #e1e8f0;
+}
+
