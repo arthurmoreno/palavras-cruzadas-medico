@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Palavras Cruzadas Médico — Web</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header" role="banner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">🩺</span>
+        <h1>Palavras Cruzadas Médico</h1>
+      </div>
+      <div class="header-actions">
+        <select id="disciplineSelect" aria-label="Selecionar disciplina">
+          <option value="anatomia">Anatomia</option>
+          <option value="fisiologia">Fisiologia</option>
+          <option value="microbiologia">Microbiologia</option>
+          <option value="farmacologia">Farmacologia</option>
+          <option value="patologia">Patologia</option>
+          <option value="bioquimica">Bioquímica</option>
+        </select>
+        <select id="difficultySelect" aria-label="Selecionar dificuldade">
+          <option value="facil">Fácil</option>
+          <option value="intermediario">Intermediário</option>
+          <option value="avancado">Avançado</option>
+        </select>
+        <select id="modeSelect" aria-label="Selecionar modo de jogo">
+          <option value="classico">Clássico</option>
+          <option value="cronometrado">Cronometrado</option>
+          <option value="diario">Desafio diário</option>
+        </select>
+        <button id="newGameBtn" class="primary">Novo jogo</button>
+        <button id="themeToggle" aria-label="Alternar tema">🌙</button>
+      </div>
+    </header>
+
+    <main class="app-main" role="main">
+      <section class="left">
+        <canvas id="board" width="560" height="560" aria-label="Tabuleiro de palavras cruzadas" role="img"></canvas>
+        <div class="hud">
+          <div class="hud-item"><strong>Pontos:</strong> <span id="score">0</span></div>
+          <div class="hud-item"><strong>Tempo:</strong> <span id="timer">00:00</span></div>
+          <div class="hud-item"><strong>Precisão:</strong> <span id="accuracy">100%</span></div>
+        </div>
+        <div class="controls">
+          <button id="checkBtn">Conferir</button>
+          <button id="revealLetterBtn">Revelar letra</button>
+          <button id="revealWordBtn">Revelar palavra</button>
+        </div>
+      </section>
+      <section class="right">
+        <div class="clue-box" aria-live="polite">
+          <h2>Pistas</h2>
+          <div class="clues">
+            <div>
+              <h3>Horizontais</h3>
+              <ol id="cluesAcross"></ol>
+            </div>
+            <div>
+              <h3>Verticais</h3>
+              <ol id="cluesDown"></ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="review" id="review" hidden>
+          <h2>Revisão</h2>
+          <ul id="reviewList"></ul>
+        </div>
+
+        <div class="editor" id="editor" hidden>
+          <h2>Editor rápido</h2>
+          <p>Adicione termo;definição por linha.</p>
+          <textarea id="editorInput" rows="6" placeholder="hemácia;Glóbulo vermelho do sangue\nnefron;Unidade funcional do rim"></textarea>
+          <div class="editor-actions">
+            <button id="loadEditorData">Usar no jogo</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer" role="contentinfo">
+      <nav class="tabs" aria-label="Navegação principal">
+        <button class="tab active" data-tab="jogo">Jogo</button>
+        <button class="tab" data-tab="estatisticas">Estatísticas</button>
+        <button class="tab" data-tab="perfil">Perfil</button>
+        <button class="tab" data-tab="editor">Editor</button>
+      </nav>
+      <div class="tab-content" id="tab-jogo" aria-live="polite"></div>
+      <div class="tab-content" id="tab-estatisticas" hidden>
+        <h2>Estatísticas</h2>
+        <ul>
+          <li>Total de jogos: <span id="stat-games">0</span></li>
+          <li>Melhor tempo (cronometrado): <span id="stat-best-time">—</span></li>
+          <li>Streak diário: <span id="stat-streak">0</span></li>
+        </ul>
+      </div>
+      <div class="tab-content" id="tab-perfil" hidden>
+        <h2>Perfil</h2>
+        <p>Nível: <span id="profile-level">1</span> — Medalhas: <span id="profile-medals">0</span></p>
+      </div>
+      <div class="tab-content" id="tab-editor" hidden>
+        <h2>Editor de cruzadas personalizadas</h2>
+        <p>Use o painel "Editor rápido" ao lado para carregar seus termos.</p>
+      </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="engine.js"></script>
+    <script src="app.js"></script>
+  </body>
+  </html>
+
