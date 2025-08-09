@@ -1,0 +1,3 @@
+hypothesis,price_point(€),offer,success_metric,notes
+Students prefer ad-supported free tier,0,Free with ads,D7 retention >= 25%,"Gate daily limit"
+Premium removes ads and unlocks unlimited,3.99/mo,Premium,D30 conversion >= 3%,"Student discount"
