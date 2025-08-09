@@ -102,6 +102,28 @@ git push origin gh-pages
 
 Mantenha a configuração de Pages apontando para `gh-pages` (root).
 
+### Script de deploy (automatizado)
+
+Há um script que publica o conteúdo de `web/` para a branch desejada usando `git subtree`:
+
+- Executar: `./scripts/deploy-web.sh`
+- Opções:
+  - `-b, --branch <name>`: branch de destino (padrão: `gh-pages`)
+  - `-r, --remote <name>`: remoto (padrão: `origin`)
+  - `-p, --prefix <dir>`: diretório a publicar (padrão: `web`)
+  - `--no-force`: não usa `--force` no push
+  - `--allow-dirty`: permite rodar com mudanças não commitadas
+
+Exemplos:
+
+```
+# Publica web/ em origin/gh-pages (force)
+./scripts/deploy-web.sh
+
+# Publica web/ em origin/pages sem force
+./scripts/deploy-web.sh -b pages --no-force
+```
+
 ## Roadmap
 
 - Empacotar a versão web em um app Android (WebView) dentro de `android/`.
@@ -110,4 +132,3 @@ Mantenha a configuração de Pages apontando para `gh-pages` (root).
 ## Licença
 
 Defina a licença que preferir para o projeto (ex.: MIT). Se desejar, adicione um arquivo `LICENSE` na raiz.
-
